@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVN LMS Mobile</title>
+    <!-- Подключение Tailwind для вспомогательных отступов -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Ваш файл стилей -->
+    <link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+    <div class="header-top">
+        Установить приложение "AVN LMS"
+    </div>
+
+    <div class="user-card">
+        <div class="user-info">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=Маматов+Калысбек&background=random" alt="Avatar">
+            </div>
+            <div>
+                <div class="user-name">Маматов Калысбек Улукбекович</div>
+                <div class="user-group">МиР(б)-1-23</div>
+            </div>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+
+    <div class="nav-tabs">
+        <div class="tab">Новости</div>
+        <div class="tab">Сообщения</div>
+        <div class="tab">Приложения</div>
+    </div>
+
+    <div class="filters-container">
+        <div class="filter-item">
+            <label>Учебный год</label>
+            <select>
+                <option>2025-26</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <label>Полугодие</label>
+            <select>
+                <option>Весенний семестр</option>
+            </select>
+        </div>
+        <button class="refresh-btn">
+            <i class="fas fa-sync-alt"></i> Обновить
+        </button>
+    </div>
+
+    <div class="days-nav">
+        <button class="day-btn" data-day="Пн">Пн</button>
+        <button class="day-btn" data-day="Вт">Вт</button>
+        <button class="day-btn" data-day="Ср">Ср</button>
+        <button class="day-btn active" data-day="Чт">Чт</button>
+        <button class="day-btn" data-day="Пт">Пт</button>
+        <button class="day-btn" data-day="Сб">Сб</button>
+        <button class="day-btn" data-day="Все">Все</button>
+    </div>
+
+    <div id="schedule-container">
+        <!-- Сюда JavaScript вставит расписание -->
+    </div>
+
+    <!-- Ваш файл скриптов -->
+    <script src="site.js"></script>
+</body>
+</html>
