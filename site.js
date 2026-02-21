@@ -34,3 +34,61 @@ const scheduleData = {
         { time: '13:00-14:20', type: 'Лк.', subject: 'Физика', teacher: 'K.С.С.', room: '1-124 (1-корпус, ауд.124)' }
     ]
 };
+
+const container = document.getElementById('schedule-container');
+
+// Функция отрисовки одного дня
+function renderDay(dayName) {
+    const items = scheduleData[dayName] || [];
+    
+    let html = `<div class="schedule-card"><h2 class="day-title">${dayName}</h2>`;
+
+    if (items.length === 0) {
+        // Здесь можно добавить блок для выходного дня, если нужно
+    } else {
+        items.forEach(item => {
+            if (item.empty) {
+                html += `<div class="empty-time">${item.time}</div>`;
+            } else {
+                html += `
+                    <div class="lesson-row ${item.highlight ? 'highlight' : ''}">
+                        <div class="time-col">${item.time}</div>
+                        <div class="qr-col"><i class="fas fa-qrcode"></i></div>
+                        <div class="info-col">
+                            <span class="subject-name">${item.type} ${item.subject}</span><br>
+                            ${item.teacher} <span class="room-name">${item.room}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    }
+    html += `</div>`;
+    return html;
+}
+
+// Обработка клика по кнопкам
+document.querySelectorAll('.day-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        // Меняем активную кнопку
+        document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const day = this.getAttribute('data-day');
+        
+        if (day === 'Все') {
+            let fullHtml = '';
+            ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'].forEach(d => {
+                fullHtml += renderDay(d);
+            });
+            container.innerHTML = fullHtml;
+        } else {
+            container.innerHTML = renderDay(day);
+        }
+    });
+});
+
+// Инициализация (показываем четверг при загрузке)
+window.onload = () => {
+    container.innerHTML = renderDay('Чт');
+};
