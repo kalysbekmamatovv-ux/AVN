@@ -14,7 +14,6 @@ const scheduleData = {
     'Ср': [
         { time: '10:00-11:20', type: 'Лк.', subject: 'Математика 2', teacher: 'Дурмонбаева З.А.', room: '1-16 (2-корпус, ауд.2/307)' },
         { time: '15:00-16:20', type: 'Пр.', subject: 'Инженерная-графика', teacher: 'Кузнецов Д.Д.', room: '1-12 (1-корпус, ауд.112)' }
-        
     ],
     'Чт': [
         { time: '10:00-11:20', type: 'Пр.', subject: 'Математика 2', teacher: 'Дурмонбаева З.А.', room: '1-16 (2-корпус, ауд.2/307)' },
@@ -32,64 +31,6 @@ const scheduleData = {
         { time: '13:00-14:20', type: 'Пр.', subject: 'Физическая культура и спорт 2', teacher: 'Каюмов Т.А.', room: '1-16 (2-корпус, ауд.Стадион)' },
     ],
     'Сб': [
-        { time: '13:00-14:20', type: 'Лк.', subject: 'Физика', teacher: 'K.С.С.', room: '3-01 (3-корпус, ауд.312)' }
+        { time: '13:00-14:20', type: 'Лк.', subject: 'Физика', teacher: 'K.С.С.', room: '1-124 (1-корпус, ауд.124)' }
     ]
-};
-
-const container = document.getElementById('schedule-container');
-
-// Функция отрисовки одного дня
-function renderDay(dayName) {
-    const items = scheduleData[dayName] || [];
-    
-    let html = `<div class="schedule-card"><h2 class="day-title">${dayName}</h2>`;
-
-    if (items.length === 0) {
-        
-    } else {
-        items.forEach(item => {
-            if (item.empty) {
-                html += `<div class="empty-time">${item.time}</div>`;
-            } else {
-                html += `
-                    <div class="lesson-row ${item.highlight ? 'highlight' : ''}">
-                        <div class="time-col">${item.time}</div>
-                        <div class="qr-col"><i class="fas fa-qrcode"></i></div>
-                        <div class="info-col">
-                            <span class="subject-name">${item.type} ${item.subject}</span><br>
-                            ${item.teacher} <span class="room-name">${item.room}</span>
-                        </div>
-                    </div>
-                `;
-            }
-        });
-    }
-    html += `</div>`;
-    return html;
-}
-
-// Обработка клика по кнопкам
-document.querySelectorAll('.day-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        // Меняем активную кнопку
-        document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-
-        const day = this.getAttribute('data-day');
-        
-        if (day === 'Все') {
-            let fullHtml = '';
-            ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'].forEach(d => {
-                fullHtml += renderDay(d);
-            });
-            container.innerHTML = fullHtml;
-        } else {
-            container.innerHTML = renderDay(day);
-        }
-    });
-});
-
-// Инициализация (показываем четверг при загрузке)
-window.onload = () => {
-    container.innerHTML = renderDay('Чт');
 };
