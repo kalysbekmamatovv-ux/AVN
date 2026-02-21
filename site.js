@@ -31,7 +31,9 @@ const scheduleData = {
         { time: '11:30-12:50', type: 'Пр.', subject: 'История Кыргызстана', teacher: 'Куттубекова В.М.', room: '1-16 (2-корпус, ауд.2/327)' },
         { time: '13:00-14:20', type: 'Пр.', subject: 'Физическая культура и спорт 2', teacher: 'Каюмов Т.А.', room: '1-16 (2-корпус, ауд.Стадион)' },
     ],
-    'Сб': []
+    'Сб': [
+        { time: '13:00-14:20', type: 'Лк.', subject: 'Физика', teacher: 'K.С.С.', room: '3-01 (3-корпус, ауд.312)' },
+    ]
 };
 
 const container = document.getElementById('schedule-container');
