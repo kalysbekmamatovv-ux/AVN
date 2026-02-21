@@ -45,7 +45,7 @@ function renderDay(dayName) {
     let html = `<div class="schedule-card"><h2 class="day-title">${dayName}</h2>`;
 
     if (items.length === 0) {
-        html += `<div style="color: #999; font-style: italic;">Занятий нет</div>`;
+        
     } else {
         items.forEach(item => {
             if (item.empty) {
