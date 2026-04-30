@@ -22,7 +22,7 @@ const scheduleData = {
         { time: '15:00-16:20', empty: true },
         { time: '16:30-17:50', empty: true },
         { time: '18:00-19:20', empty: true },
-        { time: '19:30-20:50', type: 'Лек.', subject: 'Математика', teacher: 'Доп. занятие', room: 'Оффлайн/Ауд. уточняется', highlight: true },
+        { time: '19:30-20:50', type: 'Пр.', subject: 'Инженерная практика', teacher: 'Доп. занятие', room: 'Оффлайн/Ауд. уточняется', highlight: true },
         { time: '21:00-22:00', empty: true }
     ],
     'Пт': [
